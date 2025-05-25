@@ -7,19 +7,20 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: '0.147.5'  # 根据需要选择适当版本
+          hugo-version: '0.147.5'
+          extended: true
 
-      - name: Build the site
+      - name: Build
         run: hugo --minify
 
       - name: Deploy to GitHub Pages
