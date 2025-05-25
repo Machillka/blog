@@ -1,4 +1,4 @@
-baseURL = 'https://machillka.github.io/'
+baseURL = 'https://machillka.github.io/blog/'
 languageCode = 'en-us'
 title = "Machillka's Blog"
 theme = "hugo-theme-stack"
