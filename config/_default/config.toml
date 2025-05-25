@@ -1,0 +1,6 @@
+baseURL = 'https://machillka.github.io/'
+languageCode = 'en-us'
+title = "Machillka's Blog"
+theme = "hugo-theme-stack"
+
+disqusShortname = "Machillka"
