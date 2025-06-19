@@ -25,10 +25,10 @@ jobs:
       - name: Build
         run: hugo --minify
 
-      - name: Add CNAME
-        run: |
-          touch public/CNAME
-          echo 'blog.machillka.me' > public/CNAME
+      # - name: Add CNAME
+      #   run: |
+      #     touch public/CNAME
+      #     echo 'blog.machillka.me' > public/CNAME
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
