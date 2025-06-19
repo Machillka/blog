@@ -6,6 +6,8 @@ on:
     branches:
       - main
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   deploy:
     runs-on: ubuntu-22.04
@@ -22,6 +24,11 @@ jobs:
 
       - name: Build
         run: hugo --minify
+
+      - name: Add CNAME
+        run: |
+          touch public/CNAME
+          echo 'blog.machillka.me' > public/CNAME
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
