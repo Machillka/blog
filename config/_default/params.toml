@@ -1,5 +1,6 @@
 mainSections = ["post"]
-# favicon = "/avatar.png"
+rssFullContent = true
+favicon = "/avatar.png"
 
 [sidebar]
 description = "A blog on some thinking"
@@ -12,7 +13,6 @@ src = "img/avatar.png"
 [footer]
 since = 1999
 
-
 [[widgets.homepage]]
 type = "search"
 
@@ -24,7 +24,6 @@ limit = 5
 
 [[widgets.homepage]]
 type = "categories"
-
 
 [widgets.homepage.params]
 limit = 10
