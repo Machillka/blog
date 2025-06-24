@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Plasma-Themes on Machillka's Blog</title><link>https://blog.machillka.me/categories/plasma-themes/</link><description>Recent content in Plasma-Themes on Machillka's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 25 Jun 2025 01:49:00 +0800</lastBuildDate><atom:link href="https://blog.machillka.me/categories/plasma-themes/index.xml" rel="self" type="application/rss+xml"/><item><title>Splash Theme</title><link>https://blog.machillka.me/p/splash-theme/</link><pubDate>Wed, 25 Jun 2025 01:49:00 +0800</pubDate><guid>https://blog.machillka.me/p/splash-theme/</guid><description>&lt;img src="https://blog.machillka.me/p/splash-theme/preview.png" alt="Featured image of post Splash Theme" />&lt;h1 id="写在前面">写在前面
+&lt;/h1>&lt;p>修改完之前做的 arona-sddm 主题之后，忽然想到来一个什庭之匣的 “ 沉浸式 ” 体验，于是发现 splash 主题的位置比较合适放一点东西，于是开始整活 ——&lt;/p>
+&lt;h1 id="主题搭建">主题搭建
+&lt;/h1>&lt;h2 id="准备工作">准备工作
+&lt;/h2>&lt;p>考据一下序章的内容，首先先得到普通的登录界面的图片。
+接着使用 AE 把中间的图案拉下来然后做一个故障风的特效，用来配合下面的文字以及序章的感觉
+&lt;del>本来打算文字也重新做的，但是嫌麻烦就未来可期吧&lt;/del>
+最后导出 gif，方便调用 （尝试过帧序列实现，感觉不如 gif 简单好用&lt;/p>
+&lt;h2 id="制作过程">制作过程
+&lt;/h2>&lt;p>原先之做了动图背景，但是发现有点单调，于是配合了 sddm 主题的样式，再添加了一个 “Welcome, Sensei”&lt;/p>
+&lt;p>但是还是很单调 —— 加入打字机的效果 （用 Qt 实现）&lt;/p>
+&lt;p>以后或许也做成故障风格的字样会比较合适一点，直接写上去的字体不是很舒服。&lt;/p></description></item></channel></rss>

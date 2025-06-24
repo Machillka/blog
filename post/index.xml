@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Machillka's Blog</title><link>https://blog.machillka.me/post/</link><description>Recent content in Posts on Machillka's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 25 Jun 2025 01:49:00 +0800</lastBuildDate><atom:link href="https://blog.machillka.me/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Splash Theme</title><link>https://blog.machillka.me/p/splash-theme/</link><pubDate>Wed, 25 Jun 2025 01:49:00 +0800</pubDate><guid>https://blog.machillka.me/p/splash-theme/</guid><description>&lt;img src="https://blog.machillka.me/p/splash-theme/preview.png" alt="Featured image of post Splash Theme" />&lt;h1 id="写在前面">写在前面
+&lt;/h1>&lt;p>修改完之前做的 arona-sddm 主题之后，忽然想到来一个什庭之匣的 “ 沉浸式 ” 体验，于是发现 splash 主题的位置比较合适放一点东西，于是开始整活 ——&lt;/p>
+&lt;h1 id="主题搭建">主题搭建
+&lt;/h1>&lt;h2 id="准备工作">准备工作
+&lt;/h2>&lt;p>考据一下序章的内容，首先先得到普通的登录界面的图片。
+接着使用 AE 把中间的图案拉下来然后做一个故障风的特效，用来配合下面的文字以及序章的感觉
+&lt;del>本来打算文字也重新做的，但是嫌麻烦就未来可期吧&lt;/del>
+最后导出 gif，方便调用 （尝试过帧序列实现，感觉不如 gif 简单好用&lt;/p>
+&lt;h2 id="制作过程">制作过程
+&lt;/h2>&lt;p>原先之做了动图背景，但是发现有点单调，于是配合了 sddm 主题的样式，再添加了一个 “Welcome, Sensei”&lt;/p>
+&lt;p>但是还是很单调 —— 加入打字机的效果 （用 Qt 实现）&lt;/p>
+&lt;p>以后或许也做成故障风格的字样会比较合适一点，直接写上去的字体不是很舒服。&lt;/p></description></item><item><title>常用特效汇总</title><link>https://blog.machillka.me/p/%E5%B8%B8%E7%94%A8%E7%89%B9%E6%95%88%E6%B1%87%E6%80%BB/</link><pubDate>Fri, 20 Jun 2025 00:15:08 +0800</pubDate><guid>https://blog.machillka.me/p/%E5%B8%B8%E7%94%A8%E7%89%B9%E6%95%88%E6%B1%87%E6%80%BB/</guid><description>&lt;h1 id="几何背景制作">几何背景制作
+&lt;/h1>&lt;p>Grid —— 对 shape 使用，生成网格背景&lt;/p></description></item><item><title>笔记目录工作流</title><link>https://blog.machillka.me/p/%E7%AC%94%E8%AE%B0%E7%9B%AE%E5%BD%95%E5%B7%A5%E4%BD%9C%E6%B5%81/</link><pubDate>Fri, 20 Jun 2025 00:00:42 +0800</pubDate><guid>https://blog.machillka.me/p/%E7%AC%94%E8%AE%B0%E7%9B%AE%E5%BD%95%E5%B7%A5%E4%BD%9C%E6%B5%81/</guid><description>&lt;h1 id="综述">综述
+&lt;/h1>&lt;p>文本编辑器使用 Obsidian
+云端存储 Github
+比之前==加强的一点== —— 可以选择是否要上传到 Blog 上&lt;/p>
+&lt;p>早年想到的方案是在 github 上跨仓库调用，但是这样无法实现&lt;/p>
+&lt;h1 id="实现">实现
+&lt;/h1>&lt;h2 id="针对-blog-system">针对 Blog System
+&lt;/h2>&lt;p>首先使用 Hugo 快速搭建静态 blog 的一个主框架（主要是对 Go 比较熟悉
+接着快速加入 theme 等子模块
+使用 Github Action 自动部署到 Pages 上&lt;/p>
+&lt;h2 id="针对-obsidian">针对 Obsidian
+&lt;/h2>&lt;ol>
+&lt;li>把普通笔记和博客文章的元数据封装成 Template&lt;/li>
+&lt;li>Quick Add
+&lt;ol>
+&lt;li>先搭建基础模型 —— 创建两个 Choice 分别对应通过模板创建普通笔记和博客笔记&lt;/li>
+&lt;li>编写一个宏 —— 包含把当前激活的文件封装成 Hugo Pages 需要的形式&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>最后再次利用 Quick Add 调用脚本实现上传到 Github 上触发条件可以是手动或者保存时自动调用&lt;/li>
+&lt;li>编写 workflow 以调用 Github Action 自动部署&lt;/li>
+&lt;/ol>
+&lt;h1 id="踩坑">踩坑
+&lt;/h1>&lt;h2 id="template">Template
+&lt;/h2>&lt;p>模板生成的时间与 Hugo 不对应，导致无法在 Hugo 上构建&lt;/p>
+&lt;h2 id="pages">Pages
+&lt;/h2>&lt;p>没有添加 CNAME 解析，导致域名绑定失效&lt;/p>
+&lt;h2 id="quick-add">Quick Add
+&lt;/h2>
+&lt;blockquote class="alert alert-danger">
+&lt;p class="alert-heading">
+非常恶心
+&lt;/p>
+&lt;/blockquote>
+&lt;p>没有重启 Obsidian 调用外部 JS 会提示空！&lt;/p>
+&lt;h2 id="js">JS
+&lt;/h2>&lt;p>&lt;del>速通 JS 导致写的很烂&lt;/del>&lt;/p>
+&lt;p>调用 powershell 的时候 使用&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-js" data-lang="js">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">exec&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">powershell&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>而不是&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-js" data-lang="js">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">exec&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">pwsh&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>powershell 默认路径是 Windows 下的垃圾东西，也没设置 Proxy，导致连接 Github 可能失败&lt;/p>
+&lt;h1 id="未来可期">未来可期
+&lt;/h1>&lt;p>封装成一个插件丢到社区里&lt;/p></description></item></channel></rss>
