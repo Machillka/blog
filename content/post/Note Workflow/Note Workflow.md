@@ -61,7 +61,7 @@ exec(powershell)
 而不是
 
 ```js
-exex(pwsh)
+exec(pwsh)
 ```
 
 powershell 默认路径是 Windows 下的垃圾东西，也没设置 Proxy，导致连接 Github 可能失败
