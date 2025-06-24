@@ -36,3 +36,9 @@ limit = 10
 
 [[widgets.page]]
 type = "toc"
+
+[imageProcessing.cover]
+enabled = true
+
+[imageProcessing.content]
+enabled = true
