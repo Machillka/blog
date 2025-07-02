@@ -1,0 +1,6 @@
+baseURL = "https://blog.machillka.me/"
+languageCode = 'en-us'
+title = "Machillka's Blog"
+theme = "stack-theme-modified"
+
+disqusShortname = "Machillka"
