@@ -1,0 +1,124 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content='基础权限 修饰符 可见范围 备注 public 所有 对所有可见 private 当前类 只能在当前的类才内访问，派生类无法访问 protect 当前类和派生类 派生类可以访问（可以跨程序集） internal 当前程序集 也就是当前项目的所有代码都可以访问 继承与多态 abstract ”抽象“，也就是标记为未实现，需要在派生类当中做出实现，实现的时候使用 override 修饰符\nℹ️ 如果类内含有抽象成员，就必须用 abstract 修饰这个类 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 public abstract class AnimalBase { // 所有 Animal 都有的 并且可以随时读写 public int Id { get; set; } // 所有 Animal 都有名字，但是需要自己去实现自己的名字是什么 public abstract string Name { get; } } public class Cat : AnimalBase { // 使用 override 表示重载 abstract 中定义的属性 public override string Name => "Cat"; // 只有 Cat 才有捕捉老鼠的行为 所以定义为成员 public void CatchMouse() { Console.WriteLine("This cat is catching a mouse"); } } virtual ”虚“，可以在基类中提供默认实现的 “abstact”，派生类可以选择是否重载 (override) 它 但是只能修饰 方法、属性、索引器、事件，==不可以修饰类== 含有虚成员的类可以不是抽象类\n'><title>面向对象的思考</title><link rel=canonical href=https://blog.machillka.me/p/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%80%9D%E8%80%83/><link rel=stylesheet href=/scss/style.min.934d92cb7079a4fcb2dc5c7199a7cd6d864f13841277a0f70c8ce3149c719cfa.css><meta property='og:title' content="面向对象的思考"><meta property='og:description' content='基础权限 修饰符 可见范围 备注 public 所有 对所有可见 private 当前类 只能在当前的类才内访问，派生类无法访问 protect 当前类和派生类 派生类可以访问（可以跨程序集） internal 当前程序集 也就是当前项目的所有代码都可以访问 继承与多态 abstract ”抽象“，也就是标记为未实现，需要在派生类当中做出实现，实现的时候使用 override 修饰符\nℹ️ 如果类内含有抽象成员，就必须用 abstract 修饰这个类 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 public abstract class AnimalBase { // 所有 Animal 都有的 并且可以随时读写 public int Id { get; set; } // 所有 Animal 都有名字，但是需要自己去实现自己的名字是什么 public abstract string Name { get; } } public class Cat : AnimalBase { // 使用 override 表示重载 abstract 中定义的属性 public override string Name => "Cat"; // 只有 Cat 才有捕捉老鼠的行为 所以定义为成员 public void CatchMouse() { Console.WriteLine("This cat is catching a mouse"); } } virtual ”虚“，可以在基类中提供默认实现的 “abstact”，派生类可以选择是否重载 (override) 它 但是只能修饰 方法、属性、索引器、事件，==不可以修饰类== 含有虚成员的类可以不是抽象类\n'><meta property='og:url' content='https://blog.machillka.me/p/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%80%9D%E8%80%83/'><meta property='og:site_name' content="Machillka's Blog"><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='CSharp'><meta property='article:tag' content='面向对象'><meta property='article:tag' content='修饰符'><meta property='article:published_time' content='2025-07-05T23:49:48+08:00'><meta property='article:modified_time' content='2025-07-05T23:49:48+08:00'><meta name=twitter:title content="面向对象的思考"><meta name=twitter:description content='基础权限 修饰符 可见范围 备注 public 所有 对所有可见 private 当前类 只能在当前的类才内访问，派生类无法访问 protect 当前类和派生类 派生类可以访问（可以跨程序集） internal 当前程序集 也就是当前项目的所有代码都可以访问 继承与多态 abstract ”抽象“，也就是标记为未实现，需要在派生类当中做出实现，实现的时候使用 override 修饰符\nℹ️ 如果类内含有抽象成员，就必须用 abstract 修饰这个类 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 public abstract class AnimalBase { // 所有 Animal 都有的 并且可以随时读写 public int Id { get; set; } // 所有 Animal 都有名字，但是需要自己去实现自己的名字是什么 public abstract string Name { get; } } public class Cat : AnimalBase { // 使用 override 表示重载 abstract 中定义的属性 public override string Name => "Cat"; // 只有 Cat 才有捕捉老鼠的行为 所以定义为成员 public void CatchMouse() { Console.WriteLine("This cat is catching a mouse"); } } virtual ”虚“，可以在基类中提供默认实现的 “abstact”，派生类可以选择是否重载 (override) 它 但是只能修饰 方法、属性、索引器、事件，==不可以修饰类== 含有虚成员的类可以不是抽象类\n'><link rel="shortcut icon" href=/avatar.png></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar_hu_859665ad302195b0.png width=300 height=300 class=site-logo loading=lazy alt=Avatar></a></figure><div class=site-meta><h1 class=site-name><a href=/>Machillka's Blog</a></h1><h2 class=site-description></h2></div></header><ol class=menu-social><li><a href=https://space.bilibili.com/611004244 target=_blank title=Bilibili rel=me><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-bilibili"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 10a4 4 0 014-4h10a4 4 0 014 4v6a4 4 0 01-4 4H7a4 4 0 01-4-4v-6z"/><path d="M8 3l2 3"/><path d="M16 3l-2 3"/><path d="M9 13v-2"/><path d="M15 11v2"/></svg></a></li><li><a href=mailto:mail@machillka.me target=_blank title=E-mail rel=me><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-gmail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16 20h3a1 1 0 001-1V5a1 1 0 00-1-1h-3v16z"/><path d="M5 20h3V4H5A1 1 0 004 5v14a1 1 0 001 1z"/><path d="M16 4l-4 4-4-4"/><path d="M4 6.5l8 7.5 8-7.5"/></svg></a></li><li><a href=https://github.com/Machillka target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span></a></li><li><a href=/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>Dark Mode</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">Table of contents</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#abstract>abstract</a></li><li><a href=#virtual>virtual</a></li><li><a href=#override>override</a></li><li><a href=#sealed>sealed</a></li><li><a href=#new>new</a></li></ol><ol><li><a href=#static>==static==</a></li><li><a href=#const>const</a></li><li><a href=#readonly>readonly</a></li><li><a href=#partial>partial</a></li><li><a href=#extern>extern</a></li><li><a href=#unsafe>unsafe</a></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/program/>Program</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/p/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%80%9D%E8%80%83/>面向对象的思考</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Jul 05, 2025</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>2 minute read</time></div></footer></div></header><section class=article-content><h1 id=基础权限>基础权限</h1><div class=table-wrapper><table><thead><tr><th>修饰符</th><th>可见范围</th><th>备注</th></tr></thead><tbody><tr><td>public</td><td>所有</td><td>对所有可见</td></tr><tr><td>private</td><td>当前类</td><td>只能在当前的类才内访问，派生类无法访问</td></tr><tr><td>protect</td><td>当前类和派生类</td><td>派生类可以访问（可以跨程序集）</td></tr><tr><td>internal</td><td>当前程序集</td><td>也就是当前项目的所有代码都可以访问</td></tr></tbody></table></div><h1 id=继承与多态>继承与多态</h1><h2 id=abstract>abstract</h2><p>”抽象“，也就是标记为未实现，需要在派生类当中做出实现，实现的时候使用 <code>override</code> 修饰符</p><blockquote class="alert alert-note"><p class=alert-heading>ℹ️
+如果类内含有抽象成员，就必须用 <code>abstract</code> 修饰这个类</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-CSharp data-lang=CSharp><span class=line><span class=cl><span class=kd>public</span> <span class=kd>abstract</span> <span class=k>class</span> <span class=nc>AnimalBase</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 所有 Animal 都有的 并且可以随时读写</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kt>int</span> <span class=n>Id</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 所有 Animal 都有名字，但是需要自己去实现自己的名字是什么</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>abstract</span> <span class=kt>string</span> <span class=n>Name</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=k>class</span> <span class=nc>Cat</span> <span class=p>:</span> <span class=n>AnimalBase</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 使用 override 表示重载 abstract 中定义的属性</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>override</span> <span class=kt>string</span> <span class=n>Name</span> <span class=p>=&gt;</span> <span class=s>&#34;Cat&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 只有 Cat 才有捕捉老鼠的行为 所以定义为成员</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=k>void</span> <span class=n>CatchMouse</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>Console</span><span class=p>.</span><span class=n>WriteLine</span><span class=p>(</span><span class=s>&#34;This cat is catching a mouse&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=virtual>virtual</h2><p>”虚“，<del>可以在基类中提供默认实现的 “abstact”</del>，派生类可以选择是否重载 (override) 它
+但是只能修饰 方法、属性、索引器、事件，==不可以修饰类==
+含有虚成员的类可以不是抽象类</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-CSharp data-lang=CSharp><span class=line><span class=cl><span class=kd>public</span> <span class=k>class</span> <span class=nc>Person</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=k>virtual</span> <span class=kt>string</span> <span class=n>Name</span> <span class=p>=&gt;</span> <span class=s>&#34;Nobody&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=k>class</span> <span class=nc>Tom</span> <span class=p>:</span> <span class=n>Person</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>override</span> <span class=kt>string</span> <span class=n>Name</span> <span class=p>=&gt;</span> <span class=s>&#34;Tom&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=k>class</span> <span class=nc>Nobody</span> <span class=p>:</span> <span class=n>Person</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=k>void</span> <span class=n>LoudOutSadness</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// 输出就是 Person 的默认实现, 即 Nobody</span>
+</span></span><span class=line><span class=cl>        <span class=n>Console</span><span class=p>.</span><span class=n>WriteLine</span><span class=p>(</span><span class=n>Name</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=override>override</h2><p>用于标记重载抽象成员或者虚成员</p><h2 id=sealed>sealed</h2><p>“密封”，标记此</p><ul><li>方法，无法再重载</li><li>类，无法再派生
+如下
+![[Pasted image 20250706085912.png]]
+dog 是最后一层封装，我们无法对它进行派生（<del>不然会出现Monster，害怕</del></li></ul><blockquote><p>适用于不希望暴露扩展点的核心类，比如工具类或安全敏感类。</p></blockquote><h2 id=new>new</h2><p>”隐藏“，创建一个与基类同名但独立的成员，具体调用哪一个成员，看实例化对象的类型</p><h1 id=特性修饰符>特性修饰符</h1><h2 id=static>==static==</h2><p>无需实例化可以直接访问（dotnet 中 CLR <strong>按需</strong> 在类型加载时分配静态字段内存，静态构造则在首次使用前执行）</p><h2 id=const>const</h2><p>编译时常量</p><h2 id=readonly>readonly</h2><p>运行时常量，仅能在声明或构造函数中赋值</p><h2 id=partial>partial</h2><p>拆分声明到多个文件内</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-CSharp data-lang=CSharp><span class=line><span class=cl><span class=c1>// File1.cs</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>partial</span> <span class=k>class</span> <span class=nc>Person</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kt>string</span> <span class=n>Name</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// File2.cs</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>partial</span> <span class=k>class</span> <span class=nc>Person</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kt>int</span> <span class=n>Age</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>此时 Person 拥有 Name 和 Age 两个属性</p><h2 id=extern>extern</h2><p>声明外部实现（针对方法）</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-CSharp data-lang=CSharp><span class=line><span class=cl><span class=kd>public</span> <span class=k>class</span> <span class=nc>NativeMethods</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=na>    [DllImport(&#34;user32.dll&#34;)]</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=kd>extern</span> <span class=kt>int</span> <span class=n>MessageBox</span><span class=p>(</span><span class=n>IntPtr</span> <span class=n>h</span><span class=p>,</span> <span class=kt>string</span> <span class=n>t</span><span class=p>,</span> <span class=kt>string</span> <span class=n>c</span><span class=p>,</span> <span class=kt>uint</span> <span class=n>u</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=unsafe>unsafe</h2><p>可以使用不安全的代码（比如指针操作）</p></section><footer class=article-footer><section class=article-tags><a href=/tags/csharp/>CSharp</a>
+<a href=/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/>面向对象</a>
+<a href=/tags/%E4%BF%AE%E9%A5%B0%E7%AC%A6/>修饰符</a></section></footer></article><footer class=site-footer><section class=copyright>&copy;
+1999 -
+2025 Machillka's Blog</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.30.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>
