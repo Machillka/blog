@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CSharp on Machillka's Blog</title><link>https://blog.machillka.me/tags/csharp/</link><description>Recent content in CSharp on Machillka's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 05 Jul 2025 23:49:48 +0800</lastBuildDate><atom:link href="https://blog.machillka.me/tags/csharp/index.xml" rel="self" type="application/rss+xml"/><item><title>面向对象的思考</title><link>https://blog.machillka.me/p/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%80%9D%E8%80%83/</link><pubDate>Sat, 05 Jul 2025 23:49:48 +0800</pubDate><guid>https://blog.machillka.me/p/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%80%9D%E8%80%83/</guid><description>&lt;h1 id="基础权限">基础权限
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CSharp on Machillka's Blog</title><link>https://blog.machillka.me/tags/csharp/</link><description>Recent content in CSharp on Machillka's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 05 Jul 2025 23:49:48 +0800</lastBuildDate><atom:link href="https://blog.machillka.me/tags/csharp/index.xml" rel="self" type="application/rss+xml"/><item><title>面向对象的思考</title><link>https://blog.machillka.me/p/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%80%9D%E8%80%83/</link><pubDate>Sat, 05 Jul 2025 23:49:48 +0800</pubDate><guid>https://blog.machillka.me/p/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%80%9D%E8%80%83/</guid><description>&lt;img src="https://blog.machillka.me/p/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%80%9D%E8%80%83/header.jpg" alt="Featured image of post 面向对象的思考" />&lt;h1 id="基础权限">基础权限
 &lt;/h1>&lt;table>
 &lt;thead>
 &lt;tr>
@@ -140,7 +140,7 @@ dog 是最后一层封装，我们无法对它进行派生（&lt;del>不然会�
 &lt;h2 id="new">new
 &lt;/h2>&lt;p>”隐藏“，创建一个与基类同名但独立的成员，具体调用哪一个成员，看实例化对象的类型&lt;/p>
 &lt;h1 id="特性修饰符">特性修饰符
-&lt;/h1>&lt;h2 id="static">==static==
+&lt;/h1>&lt;h2 id="static">static
 &lt;/h2>&lt;p>无需实例化可以直接访问（dotnet 中 CLR &lt;strong>按需&lt;/strong> 在类型加载时分配静态字段内存，静态构造则在首次使用前执行）&lt;/p>
 &lt;h2 id="const">const
 &lt;/h2>&lt;p>编译时常量&lt;/p>

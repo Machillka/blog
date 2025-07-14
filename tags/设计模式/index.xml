@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>设计模式 on Machillka's Blog</title><link>https://blog.machillka.me/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link><description>Recent content in 设计模式 on Machillka's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 14 Jul 2025 16:30:54 +0800</lastBuildDate><atom:link href="https://blog.machillka.me/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml"/><item><title>抽象和接口的思考</title><link>https://blog.machillka.me/p/%E6%8A%BD%E8%B1%A1%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%80%9D%E8%80%83/</link><pubDate>Mon, 14 Jul 2025 16:30:54 +0800</pubDate><guid>https://blog.machillka.me/p/%E6%8A%BD%E8%B1%A1%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%80%9D%E8%80%83/</guid><description>&lt;img src="https://blog.machillka.me/p/%E6%8A%BD%E8%B1%A1%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%80%9D%E8%80%83/header.jpg" alt="Featured image of post 抽象和接口的思考" />&lt;p>关于抽象类（Abstract）和接口（Interface）在使用的时候的思考&lt;/p>
+&lt;h1 id="写在前面">写在前面
+&lt;/h1>&lt;p>抽象类和接口都定义了一系列的抽象成员，可以在继承的派生中重新实现。&lt;/p>
+&lt;p>那么引出问题 ——&lt;/p>
+&lt;ul>
+&lt;li>为什么有了抽象还需要有接口&lt;/li>
+&lt;li>都是定义了部分抽象成员，二者有什么区别&lt;/li>
+&lt;li>使用场景&lt;/li>
+&lt;/ul>
+&lt;h1 id="抽象理解">抽象理解
+&lt;/h1>&lt;p>抽象相当于讲述了 “ 你是什么 ”，比如哺乳动物是动物；玩家是人；三角形是一个几何图形 ……&lt;/p>
+&lt;p>当我们知道所有的动物的共同特征的时候，就可以封装成一个抽象的动物类，接着在其他的动物类别（比如爬行动物、哺乳动物等）继承动物抽象类，指明所有动物共有的默认行为或者属性之类。&lt;/p>
+&lt;p>抽象类通过简单的继承，实现了多态，化简了重复代码、提升代码的逻辑性；&lt;/p>
+&lt;blockquote class="alert alert-warning">
+&lt;p class="alert-heading">
+⚠️
+只能单继承，可以有成员变量
+&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="接口理解">接口理解
+&lt;/h1>&lt;p>接口相当于讲述了 “ 你可以做什么 “，即鸟可以飞，飞机也可以飞，所以可以把飞作为它们可以干的事情封装成一个接口&lt;/p>
+&lt;p>你可能是一个普通的GameObject，但是依旧可以响应鼠标点击事件，于是可以再继承一个鼠标点击事件的接口，然后实现当接受到鼠标点击事件的时候所需要做出的逻辑即可。&lt;/p>
+&lt;p>接口类似于一种 “ 游戏规则 ”，继承了这个接口，必须实现这个接口里的东西。又由于可以继承多个接口，所以可以相当于 “ 拓展方法 ” 来使用。&lt;/p></description></item></channel></rss>
