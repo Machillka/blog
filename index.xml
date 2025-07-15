@@ -1,4 +1,97 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Machillka's Blog</title><link>https://blog.machillka.me/</link><description>Recent content on Machillka's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 14 Jul 2025 16:30:54 +0800</lastBuildDate><atom:link href="https://blog.machillka.me/index.xml" rel="self" type="application/rss+xml"/><item><title>抽象和接口的思考</title><link>https://blog.machillka.me/p/%E6%8A%BD%E8%B1%A1%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%80%9D%E8%80%83/</link><pubDate>Mon, 14 Jul 2025 16:30:54 +0800</pubDate><guid>https://blog.machillka.me/p/%E6%8A%BD%E8%B1%A1%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%80%9D%E8%80%83/</guid><description>&lt;img src="https://blog.machillka.me/p/%E6%8A%BD%E8%B1%A1%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%80%9D%E8%80%83/header.jpg" alt="Featured image of post 抽象和接口的思考" />&lt;p>关于抽象类（Abstract）和接口（Interface）在使用的时候的思考&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Machillka's Blog</title><link>https://blog.machillka.me/</link><description>Recent content on Machillka's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 15 Jul 2025 17:07:19 +0800</lastBuildDate><atom:link href="https://blog.machillka.me/index.xml" rel="self" type="application/rss+xml"/><item><title>设计原则</title><link>https://blog.machillka.me/p/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/</link><pubDate>Tue, 15 Jul 2025 17:07:19 +0800</pubDate><guid>https://blog.machillka.me/p/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/</guid><description>&lt;h1 id="开闭">开闭
+&lt;/h1>&lt;h1 id="依赖倒置原则">依赖倒置原则
+&lt;/h1>&lt;p>看到的定义感觉比较复杂，简单来说 ——&lt;/p>
+&lt;p>情景：我们（高层）需要使用一个类A（底层），那么，如果直接引用A，在未来如果需要应用类B的时候就需要修改我们自身，容易出问题。所以我们可以通过一个接口来访问我们需要的东西，然后让类A、B等实现这个接口，这样就不需要修改我们自身，只需要定义好底层就可以了。&lt;/p>
+&lt;p>实例例子 ——
+客户吃&lt;code>Food&lt;/code>，原先只想到了客户吃饭，直接传递一个&lt;code>rice&lt;/code>给客户&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-CSharp" data-lang="CSharp">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Sercice&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="k">void&lt;/span> &lt;span class="n">Eating&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Rice&lt;/span> &lt;span class="n">rice&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>如果客户想要吃面，就需要重载一个 Eating，或者修改 Eating 中的内容，非常麻烦，于是想到抽象出一个&lt;code>Food&lt;/code>，客户只需要使用&lt;code>Food&lt;/code>即可&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-CSharp" data-lang="CSharp">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Service&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="k">void&lt;/span> &lt;span class="n">Eating&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Food&lt;/span> &lt;span class="n">food&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>然后&lt;code>Food&lt;/code>的实现&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-CSharp" data-lang="CSharp">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="k">interface&lt;/span> &lt;span class="nc">Food&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="k">class&lt;/span> &lt;span class="nc">Rice&lt;/span> &lt;span class="p">:&lt;/span> &lt;span class="n">Food&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="k">class&lt;/span> &lt;span class="nc">Noodle&lt;/span> &lt;span class="p">:&lt;/span> &lt;span class="n">Food&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="k">class&lt;/span> &lt;span class="nc">OtherFood&lt;/span> &lt;span class="p">:&lt;/span> &lt;span class="n">Food&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>这样可以在不修改客户代码逻辑的前提下，使其可以食用各种食物 ——&lt;/p>
+&lt;p>==依赖倒置原则==：高层次的模块不依赖于低层次的模块的实现细节，依赖关系被颠倒（反转），从而使得低层次模块依赖于高层次模块的需求抽象。&lt;/p>
+&lt;ol>
+&lt;li>高层次的模块不应该依赖于低层次的模块，两者都应该依赖与&lt;strong>抽象接口&lt;/strong>&lt;/li>
+&lt;li>抽象接口不应该依赖于具体实现。而具体实现则应该依赖于&lt;strong>抽象接口&lt;/strong>。&lt;/li>
+&lt;/ol></description></item><item><title>工厂模式</title><link>https://blog.machillka.me/p/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link><pubDate>Tue, 15 Jul 2025 14:32:27 +0800</pubDate><guid>https://blog.machillka.me/p/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid><description>&lt;img src="https://blog.machillka.me/p/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/header.jpg" alt="Featured image of post 工厂模式" />&lt;h1 id="工厂模式">工厂模式
+&lt;/h1>&lt;p>制造汽车，划分成为了奔驰汽车厂、福特汽车厂等，每一个工厂都是继承工厂，只负责生产一个品牌的车子；
+制造食物，划分成为了拉面店、炒饭店、火锅店等，每一家店都只生产对应的食物。&lt;/p></description></item><item><title>抽象和接口的思考</title><link>https://blog.machillka.me/p/%E6%8A%BD%E8%B1%A1%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%80%9D%E8%80%83/</link><pubDate>Mon, 14 Jul 2025 16:30:54 +0800</pubDate><guid>https://blog.machillka.me/p/%E6%8A%BD%E8%B1%A1%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%80%9D%E8%80%83/</guid><description>&lt;img src="https://blog.machillka.me/p/%E6%8A%BD%E8%B1%A1%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%80%9D%E8%80%83/header.jpg" alt="Featured image of post 抽象和接口的思考" />&lt;p>关于抽象类（Abstract）和接口（Interface）在使用的时候的思考&lt;/p>
 &lt;h1 id="写在前面">写在前面
 &lt;/h1>&lt;p>抽象类和接口都定义了一系列的抽象成员，可以在继承的派生中重新实现。&lt;/p>
 &lt;p>那么引出问题 ——&lt;/p>
