@@ -5,11 +5,11 @@ title: Rust Ownership
 categories:
   - Program
 tags:
-  - Rust
+  - rust
+  - program
 image:
 ---
-对 Rust 的所有权的一些理解
-
+在 Rust 中，所有权（ownership）属于每一个“值”（value），也就是用 `let`、函数参数或结构体字段创建的任何变量或数据结构。无论是基本数值类型（如 `i32`、`bool`）、堆分配的集合类型（如 `String`、`Vec<T>`）、用户自定义的 `struct` 和 `enum`，还是智能指针类型（如 `Box<T>`、`Rc<T>`、`Arc<T>`），它们都各自“拥有”自己的数据，并在超出作用域时负责释放这些数据。
 # 堆和栈
 
 ## 堆
@@ -21,7 +21,7 @@ image:
 
 通常连续，空间有限（溢栈错误常见），一般分配中小型数据。存储的所有数据都必须占用==已知==的==固定大小==的内存空间
 
-# Ownership
+# 所有权 Ownership
 
 Rust 通过所有权系统来管理内存
 
@@ -94,8 +94,8 @@ println!("{}", s);
 
 分析 ——
 1. s 拥有 "Hello rust" 的所有权
-2. s 的所有权移交给了 take_ownership_string 函数
-3. take_ownership_string 函数执行完成，并没有归还 s 的所有权给 s，而是回收（因为开辟在堆区）
+2. s 的所有权移交给了 `take_ownership_string` 函数
+3. `take_ownership_string` 函数执行完成，并没有归还 s 的所有权给 s，而是回收（因为开辟在堆区）
 4. 导致 s 无法再被访问
 
 也可以还回去
@@ -142,3 +142,8 @@ fn mut_borrow_test(s: mut &String) {
 >1. 不可变引用可以有多个
 >2. 可变引用只能有一个
 
+# 引用和借用的关系
+
+借用（Borrowing）是指“临时借用”一个值而不转移所有权，通过引用来访问数据。
+
+可以说借用是达成不移交所有权而访问数据的**目的**，而引用是实现借用的**手段**？
