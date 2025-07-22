@@ -316,14 +316,14 @@ dog 是最后一层封装，我们无法对它进行派生（&lt;del>不然会�
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="unsafe">unsafe
-&lt;/h2>&lt;p>可以使用不安全的代码（比如指针操作）&lt;/p></description></item><item><title>Rust Ownership</title><link>https://blog.machillka.me/p/rust-ownership/</link><pubDate>Wed, 02 Jul 2025 22:19:08 +0800</pubDate><guid>https://blog.machillka.me/p/rust-ownership/</guid><description>&lt;p>对 Rust 的所有权的一些理解&lt;/p>
+&lt;/h2>&lt;p>可以使用不安全的代码（比如指针操作）&lt;/p></description></item><item><title>Rust Ownership</title><link>https://blog.machillka.me/p/rust-ownership/</link><pubDate>Wed, 02 Jul 2025 22:19:08 +0800</pubDate><guid>https://blog.machillka.me/p/rust-ownership/</guid><description>&lt;p>在 Rust 中，所有权（ownership）属于每一个“值”（value），也就是用 &lt;code>let&lt;/code>、函数参数或结构体字段创建的任何变量或数据结构。无论是基本数值类型（如 &lt;code>i32&lt;/code>、&lt;code>bool&lt;/code>）、堆分配的集合类型（如 &lt;code>String&lt;/code>、&lt;code>Vec&amp;lt;T&amp;gt;&lt;/code>）、用户自定义的 &lt;code>struct&lt;/code> 和 &lt;code>enum&lt;/code>，还是智能指针类型（如 &lt;code>Box&amp;lt;T&amp;gt;&lt;/code>、&lt;code>Rc&amp;lt;T&amp;gt;&lt;/code>、&lt;code>Arc&amp;lt;T&amp;gt;&lt;/code>），它们都各自“拥有”自己的数据，并在超出作用域时负责释放这些数据。&lt;/p>
 &lt;h1 id="堆和栈">堆和栈
 &lt;/h1>&lt;h2 id="堆">堆
 &lt;/h2>&lt;p>通常不连续，受物理内存的限制，空间比较大，一般分配大型数据或者动态数据
 &lt;strong>离开作用域之后直接回收&lt;/strong>&lt;/p>
 &lt;h2 id="栈">栈
 &lt;/h2>&lt;p>通常连续，空间有限（溢栈错误常见），一般分配中小型数据。存储的所有数据都必须占用==已知==的==固定大小==的内存空间&lt;/p>
-&lt;h1 id="ownership">Ownership
+&lt;h1 id="所有权-ownership">所有权 Ownership
 &lt;/h1>&lt;p>Rust 通过所有权系统来管理内存&lt;/p>
 &lt;blockquote>
 &lt;ol>
@@ -424,8 +424,8 @@ dog 是最后一层封装，我们无法对它进行派生（&lt;del>不然会�
 &lt;p>分析 ——&lt;/p>
 &lt;ol>
 &lt;li>s 拥有 &amp;ldquo;Hello rust&amp;rdquo; 的所有权&lt;/li>
-&lt;li>s 的所有权移交给了 take_ownership_string 函数&lt;/li>
-&lt;li>take_ownership_string 函数执行完成，并没有归还 s 的所有权给 s，而是回收（因为开辟在堆区）&lt;/li>
+&lt;li>s 的所有权移交给了 &lt;code>take_ownership_string&lt;/code> 函数&lt;/li>
+&lt;li>&lt;code>take_ownership_string&lt;/code> 函数执行完成，并没有归还 s 的所有权给 s，而是回收（因为开辟在堆区）&lt;/li>
 &lt;li>导致 s 无法再被访问&lt;/li>
 &lt;/ol>
 &lt;p>也可以还回去&lt;/p>
@@ -502,7 +502,10 @@ Note
 &lt;li>不可变引用可以有多个&lt;/li>
 &lt;li>可变引用只能有一个&lt;/li>
 &lt;/ol>
-&lt;/blockquote></description></item><item><title>Splash Theme</title><link>https://blog.machillka.me/p/splash-theme/</link><pubDate>Wed, 25 Jun 2025 01:49:00 +0800</pubDate><guid>https://blog.machillka.me/p/splash-theme/</guid><description>&lt;img src="https://blog.machillka.me/p/splash-theme/preview.png" alt="Featured image of post Splash Theme" />&lt;h1 id="写在前面">写在前面
+&lt;/blockquote>
+&lt;h1 id="引用和借用的关系">引用和借用的关系
+&lt;/h1>&lt;p>借用（Borrowing）是指“临时借用”一个值而不转移所有权，通过引用来访问数据。&lt;/p>
+&lt;p>可以说借用是达成不移交所有权而访问数据的&lt;strong>目的&lt;/strong>，而引用是实现借用的&lt;strong>手段&lt;/strong>？&lt;/p></description></item><item><title>Splash Theme</title><link>https://blog.machillka.me/p/splash-theme/</link><pubDate>Wed, 25 Jun 2025 01:49:00 +0800</pubDate><guid>https://blog.machillka.me/p/splash-theme/</guid><description>&lt;img src="https://blog.machillka.me/p/splash-theme/preview.png" alt="Featured image of post Splash Theme" />&lt;h1 id="写在前面">写在前面
 &lt;/h1>&lt;p>修改完之前做的 arona-sddm 主题之后，忽然想到来一个什庭之匣的 “ 沉浸式 ” 体验，于是发现 splash 主题的位置比较合适放一点东西，于是开始整活 ——&lt;/p>
 &lt;h1 id="主题搭建">主题搭建
 &lt;/h1>&lt;h2 id="准备工作">准备工作
@@ -571,4 +574,71 @@ Note
 &lt;/div>
 &lt;/div>&lt;p>powershell 默认路径是 Windows 下的垃圾东西，也没设置 Proxy，导致连接 Github 可能失败&lt;/p>
 &lt;h1 id="未来可期">未来可期
-&lt;/h1>&lt;p>封装成一个插件丢到社区里&lt;/p></description></item><item><title>Archives</title><link>https://blog.machillka.me/archives/</link><pubDate>Sun, 25 May 2025 00:00:00 +0000</pubDate><guid>https://blog.machillka.me/archives/</guid><description/></item><item><title>Search</title><link>https://blog.machillka.me/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.machillka.me/search/</guid><description/></item></channel></rss>
+&lt;/h1>&lt;p>封装成一个插件丢到社区里&lt;/p></description></item><item><title>Archives</title><link>https://blog.machillka.me/archives/</link><pubDate>Sun, 25 May 2025 00:00:00 +0000</pubDate><guid>https://blog.machillka.me/archives/</guid><description/></item><item><title>Rust Lifetime</title><link>https://blog.machillka.me/p/rust-lifetime/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.machillka.me/p/rust-lifetime/</guid><description>&lt;h1 id="生命周期">生命周期
+&lt;/h1>&lt;ul>
+&lt;li>Rust 中的每一个引用都有其 &lt;strong>生命周期&lt;/strong>（&lt;em>lifetime&lt;/em>），也就是引用保持有效的作用域。&lt;/li>
+&lt;li>生命周期的主要目标是避免&lt;strong>悬垂引用&lt;/strong>。&lt;/li>
+&lt;/ul>
+&lt;p>函数返回参数的引用，其生命周期和该参数相同。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-rust" data-lang="rust">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 返回的是对 x 或 y 的引用, 不能保证返回的引用生命周期是否可用于是使用生命周期标记
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">pub&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">fn&lt;/span> &lt;span class="nf">longest&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="na">&amp;#39;a&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>: &lt;span class="kp">&amp;amp;&lt;/span>&lt;span class="na">&amp;#39;a&lt;/span> &lt;span class="kt">str&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">y&lt;/span>: &lt;span class="kp">&amp;amp;&lt;/span>&lt;span class="na">&amp;#39;a&lt;/span> &lt;span class="kt">str&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>-&amp;gt; &lt;span class="kp">&amp;amp;&lt;/span>&lt;span class="na">&amp;#39;a&lt;/span> &lt;span class="kt">str&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">    &lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">len&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">len&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">        &lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">    &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">else&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">        &lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">    &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>直接规避引用（使用clone性能下降）&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-rust" data-lang="rust">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 在堆区里开辟一个新的区域存储 res, 并且移交所有权，规避了对引用的生命周期问题
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">pub&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">fn&lt;/span> &lt;span class="nf">string_longest&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>: &lt;span class="kp">&amp;amp;&lt;/span>&lt;span class="nb">String&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">y&lt;/span>: &lt;span class="kp">&amp;amp;&lt;/span>&lt;span class="nb">String&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>-&amp;gt; &lt;span class="nb">String&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">res&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">len&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">len&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">clone&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">else&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">clone&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">};&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">res&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="生命周期标记">生命周期标记
+&lt;/h1>&lt;p>为什么需要标记生命周期？——&lt;/p>
+&lt;p>当你返回一个引用时，Rust 需要知道这个引用的生命周期和它所引用的数据的生命周期之间的关系。如果不指定生命周期，Rust 编译器无法判断返回的引用是否在调用者作用域内仍然有效。&lt;/p>
+&lt;blockquote class="alert alert-warning">
+&lt;p class="alert-heading">
+⚠️
+Warning
+&lt;/p>
+&lt;ul>
+&lt;li>生命周期标注并不会改变引用的实际生命周期，它只是告诉编译器不同引用之间的关系。&lt;/li>
+&lt;li>如果函数内部创建了一个局部变量并尝试返回它的引用，这是不允许的，因为局部变量会在函数结束时被销毁。&lt;/li>
+&lt;/ul>
+&lt;/blockquote></description></item><item><title>Search</title><link>https://blog.machillka.me/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.machillka.me/search/</guid><description/></item></channel></rss>
